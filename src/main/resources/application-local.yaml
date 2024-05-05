@@ -23,3 +23,17 @@ spring:
             - Path=/api/contract/**
           filters:
             - RewritePath=/api/contract/(?<segment>.*), /${segment}
+            - name: CircuitBreaker
+              args:
+                name: contractCircuitBreaker
+                fallbackUri: forward:/fallback/contract
+        - id: customer-app
+          uri: http://localhost:1239
+          predicates:
+            - Path=/api/customer/**
+          filters:
+            - RewritePath=/api/customer/(?<segment>.*), /${segment}
+            - name: CircuitBreaker
+              args:
+                name: customerCircuitBreaker
+                fallbackUri: forward:/fallback/customer
