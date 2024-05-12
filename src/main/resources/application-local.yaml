@@ -37,3 +37,13 @@ spring:
               args:
                 name: customerCircuitBreaker
                 fallbackUri: forward:/fallback/customer
+        - id: product-app
+          uri: http://localhost:1240
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/product/(?<segment>.*), /${segment}
+            - name: CircuitBreaker
+              args:
+                name: productCircuitBreaker
+                fallbackUri: forward:/fallback/product
