@@ -27,4 +27,13 @@ public class FallbackController {
         response.put("message", "The customer service is temporarily unavailable. Please try again later.");
         return response;
     }
+
+    @RequestMapping(value = "/product", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+    public Map<String, Object> fallbackProduct() {
+        Map<String, Object> response = new HashMap<>();
+        response.put("status", HttpStatus.SERVICE_UNAVAILABLE.value());
+        response.put("data", null);
+        response.put("message", "The product service is temporarily unavailable. Please try again later.");
+        return response;
+    }
 }
