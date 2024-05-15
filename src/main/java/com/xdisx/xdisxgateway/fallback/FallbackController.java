@@ -15,7 +15,7 @@ public class FallbackController {
         Map<String, Object> response = new HashMap<>();
         response.put("status", HttpStatus.SERVICE_UNAVAILABLE.value());
         response.put("data", null);
-        response.put("message", "The contract service is temporarily unavailable. Please try again later.");
+        response.put("serviceDown", "The contract service is temporarily unavailable. Please try again later.");
         return response;
     }
 
@@ -24,7 +24,7 @@ public class FallbackController {
         Map<String, Object> response = new HashMap<>();
         response.put("status", HttpStatus.SERVICE_UNAVAILABLE.value());
         response.put("data", null);
-        response.put("message", "The customer service is temporarily unavailable. Please try again later.");
+        response.put("serviceDown", "The customer service is temporarily unavailable. Please try again later.");
         return response;
     }
 
@@ -33,7 +33,7 @@ public class FallbackController {
         Map<String, Object> response = new HashMap<>();
         response.put("status", HttpStatus.SERVICE_UNAVAILABLE.value());
         response.put("data", null);
-        response.put("message", "The product service is temporarily unavailable. Please try again later.");
+        response.put("serviceDown", "The product service is temporarily unavailable. Please try again later.");
         return response;
     }
 }
