@@ -47,3 +47,9 @@ spring:
               args:
                 name: productCircuitBreaker
                 fallbackUri: forward:/fallback/product
+        - id: security-app
+          uri: http://localhost:1250
+          predicates:
+            - Path=/api/security/**
+          filters:
+            - RewritePath=/api/security/(?<segment>.*), /${segment}
